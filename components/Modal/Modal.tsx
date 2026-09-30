@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import css from './Modal.module.css';
@@ -8,9 +10,7 @@ interface ModalProps {
   children: React.ReactNode;
 }
 
-const modalRoot = document.getElementById('root') || document.body;
-
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
+export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   useEffect(() => {
     if (!isOpen) return;
 
@@ -29,13 +29,16 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
     };
   }, [isOpen, onClose]);
 
-  if (!isOpen) return null;
+  // Якщо модалка закрита або ми знаходимося на сервері (де немає window/document) — нічого не рендеримо
+  if (!isOpen || typeof window === 'undefined') return null;
 
   const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
       onClose();
     }
   };
+
+  const modalRoot = document.getElementById('root') || document.body;
 
   return createPortal(
     <div className={css.backdrop} role="dialog" aria-modal="true" onClick={handleBackdropClick}>
