@@ -9,7 +9,7 @@ import Pagination from '../../components/Pagination/Pagination';
 import Modal from '../../components/Modal/Modal';
 import NoteForm from '../../components/NoteForm/NoteForm';
 import { fetchNotes, createNote } from '../../services/noteService';
-import type { CreateNoteDto } from '../../src/types/note';
+import type { CreateNoteDto } from '../../types/note';
 
 export function NotesClient() {
   const queryClient = useQueryClient();

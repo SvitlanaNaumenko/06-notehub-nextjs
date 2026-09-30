@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import css from './NoteList.module.css';
-import { Note } from '@/src/lib/api';
+import { Note } from '@/lib/api';
 
 type Props = {
   notes: Note[];

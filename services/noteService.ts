@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { Note, CreateNoteDto } from '../src/types/note';
+import type { Note, CreateNoteDto } from '../types/note';
 
 // Створюємо окремий екземпляр axios із базовою URL-адресою бекенду
 const api = axios.create({
